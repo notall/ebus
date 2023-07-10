@@ -112,7 +112,7 @@ func (bus *_eventBus) doPublish(ctx context.Context, topic string, event interfa
 		)
 		// If submitting a task to the pool fails, it will be executed in the current thread
 		if err != nil {
-			bus.opts.Logger.CtxError(ctx, "submit task failed, topic:%v error:%v", topic, err)
+			bus.opts.Logger.CtxError(ctx, "[ebus] submit task failed, topic:%v error:%v", topic, err)
 			bus.handleEvent(ctx, vHandler, event)
 			waitGroup.Done()
 		}
@@ -130,7 +130,7 @@ func (bus *_eventBus) handleEvent(ctx context.Context, handler reflect.Value, ev
 			if !ok {
 				err = fmt.Errorf("%v", r)
 			}
-			bus.opts.Logger.CtxError(ctx, "panic, error:%v stack:%v", err, "...\n"+string(buf))
+			bus.opts.Logger.CtxError(ctx, "[ebus] panic, error:%v stack:%v", err, "...\n"+string(buf))
 		}
 	}()
 
