@@ -1,3 +1,5 @@
+Copied from [asaskevich/EventBus](github.com/asaskevich/EventBus) and modified
+
 eBus
 ===============
 eBus is a lightweight in-memory pubsub EventBus for GoLang.
